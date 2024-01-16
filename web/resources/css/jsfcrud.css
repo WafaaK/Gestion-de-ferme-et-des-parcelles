@@ -1,0 +1,360 @@
+.ui-widget {
+    font-size: 15px !important;
+}
+.ui-layout-north {
+    z-index: 20 !important;
+    overflow: visible !important;;
+}
+.ui-layout-north .ui-layout-unit-content {
+    overflow: visible !important;
+}
+.ui-widget-header {
+    text-align: center;
+    text-transform: uppercase;
+}
+.ui-button {
+    margin-top: 10px !important;
+}
+ 
+ body {
+                background-color: #f5f8ed; 
+                font-family: 'Arial', sans-serif;
+            }
+
+          .farm-panel {
+                border: 2px solid #8dbb75; /* Greenish border for the panel */
+                border-radius: 10px;
+                margin: 20px;
+                padding: 20px;
+                background-color: #fff; /* White background for the panel */
+            }
+
+            .farm-header {
+    background-color: #8dbb75;
+    color: #fff;
+    padding: 10px;
+    font-size: 30px;
+    text-align: center;
+    margin-bottom: 20px;
+    width: 98%;
+    display: block;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+            .farm-table {
+                width: 100%;
+                background-color: #5f8f5e;/* Greenish background color for the table */
+            }
+
+            .farm-table th,
+            .farm-table td {
+                 border: 1px solid #336626; /* Dark greenish border for table cells */
+                padding: 10px; /* Adjusted padding */
+                text-align: center;
+                color: #4f9a3d; /* Dark greenish text color for table cells */
+            }
+
+            .farm-button {
+                background-color: #4f9a3d; /* Dark greenish color for buttons */
+                color: #336626; /* White text on buttons */
+                padding: 8px 16px;
+                border: 2px solid #ff0000; /* Red border for buttons */
+                text-align: center;
+                text-decoration: none;
+                display: inline-block;
+                font-size: 14px;
+                font-weight: bold; /* Bold text for buttons */
+                margin: 4px 2px;
+                cursor: pointer;
+            }
+
+            .farm-button:hover {
+                background-color: #4f9a3d; /* Darker greenish color on hover */
+            }
+
+            
+body {
+                background-color: #f5f8ed; /* Light greenish background */
+                font-family: 'Arial', sans-serif;
+            }
+
+            .appuser-panel {
+                border: 2px solid #8dbb75; /* Greenish border for the panel */
+                border-radius: 10px;
+                margin: 20px;
+                padding: 20px;
+                background-color: #fff; /* White background for the panel */
+            }
+
+            .appuser-header {
+                background-color: #8dbb75; /* Greenish color for the header */
+                color: #fff; /* White text on the header */
+                padding: 10px;
+                font-size: 30px;
+                text-align: center;
+                margin-bottom: 20px;
+            }
+
+            .appuser-table {
+                width: 100%;
+                background-color: #5f8f5e; /* Greenish background color for the table */
+            }
+
+            .appuser-table th, 
+            .appuser-table td {
+                border: 1px solid #336626; /* Dark greenish border for table cells */
+                padding: 10px; /* Adjusted padding */
+                text-align: center;
+                color: #4f9a3d; /* Dark greenish text color for table cells */
+            }
+
+            .appuser-button {
+                background-color: #4f9a3d; /* Dark greenish color for buttons */
+                color: #336626; /* White text on buttons */
+                padding: 8px 16px;
+                border: 2px solid #ff0000; /* Red border for buttons */
+                text-align: center;
+                text-decoration: none;
+                display: inline-block;
+                font-size: 14px;
+                font-weight: bold; /* Bold text for buttons */
+                margin: 4px 2px;
+                cursor: pointer;
+            }
+
+            .appuser-button:hover {
+                background-color: #4f9a3d; /* Darker greenish color on hover */
+            }
+            
+            
+       body {
+                background-color: #f5f8ed;
+                font-family: 'Arial', sans-serif;
+            }
+
+            .parcelle-panel {
+                border: 2px solid #8dbb75;
+                border-radius: 10px;
+                margin: 20px;
+                padding: 20px;
+                background-color: #fff;
+            }
+
+            .parcelle-header {
+                background-color: #8dbb75;
+                color: #fff;
+                padding: 10px;
+                font-size: 30px;
+                text-align: center;
+                margin-bottom: 20px;
+            }
+
+            .parcelle-table {
+                width: 100%;
+                background-color: #5f8f5e;
+            }
+
+            .parcelle-table th,
+            .parcelle-table td {
+                border: 1px solid #336626;
+                padding: 10px;
+                text-align: center;
+                color: #4f9a3d;
+            }
+
+            .parcelle-button {
+                background-color: #4f9a3d;
+                color: #fff;
+                padding: 8px 16px;
+                border: 2px solid #ff0000;
+                text-align: center;
+                text-decoration: none;
+                display: inline-block;
+                font-size: 14px;
+                font-weight: bold;
+                margin: 4px 2px;
+                cursor: pointer;
+            }
+
+            .parcelle-button:hover {
+                background-color: #3d7e35;
+            }
+            
+            
+             body {
+                background-color: #f5f8ed;
+                font-family: 'Arial', sans-serif;
+            }
+
+            .plantage-panel {
+                border: 2px solid #8dbb75;
+                border-radius: 10px;
+                margin: 20px;
+                padding: 20px;
+                background-color: #fff;
+            }
+
+            .plantage-header {
+                background-color: #8dbb75;
+                color: #fff;
+                padding: 10px;
+                font-size: 30px;
+                text-align: center;
+                margin-bottom: 20px;
+            }
+
+            .plantage-table {
+                width: 100%;
+                background-color: #5f8f5e;
+            }
+
+            .plantage-table th,
+            .plantage-table td {
+                border: 1px solid #336626;
+                padding: 10px;
+                text-align: center;
+                color: #4f9a3d;
+            }
+
+            .plantage-button {
+                background-color: #4f9a3d;
+                color: #fff;
+                padding: 8px 16px;
+                border: 2px solid #ff0000;
+                text-align: center;
+                text-decoration: none;
+                display: inline-block;
+                font-size: 14px;
+                font-weight: bold;
+                margin: 4px 2px;
+                cursor: pointer;
+            }
+
+            .plantage-button:hover {
+                background-color: #3d7e35;
+            }
+            
+            
+            body {
+                background-color: #f5f8ed;
+                font-family: 'Arial', sans-serif;
+            }
+
+            .plante-panel {
+                border: 2px solid #8dbb75;
+                border-radius: 10px;
+                margin: 20px;
+                padding: 20px;
+                background-color: #fff;
+            }
+
+            .plante-header {
+                background-color: #8dbb75;
+                color: #fff;
+                padding: 10px;
+                font-size: 30px;
+                text-align: center;
+                margin-bottom: 20px;
+            }
+
+            .plante-table {
+                width: 100%;
+                background-color: #5f8f5e;
+            }
+
+            .plante-table th,
+            .plante-table td {
+                border: 1px solid #336626;
+                padding: 10px;
+                text-align: center;
+                color: #4f9a3d;
+            }
+
+            .plante-button {
+                background-color: #4f9a3d;
+                color: #fff;
+                padding: 8px 16px;
+                border: 2px solid #ff0000;
+                text-align: center;
+                text-decoration: none;
+                display: inline-block;
+                font-size: 14px;
+                font-weight: bold;
+                margin: 4px 2px;
+                cursor: pointer;
+            }
+
+            .plante-button:hover {
+                background-color: #3d7e35;
+            }
+            
+            
+            body {
+                background-color: #f5f8ed;
+                font-family: 'Arial', sans-serif;
+            }
+
+            .typeplante-panel {
+                border: 2px solid #8dbb75;
+                border-radius: 10px;
+                margin: 20px;
+                padding: 20px;
+                background-color: #fff;
+            }
+
+            .typeplante-header {
+                background-color: #8dbb75;
+                color: #fff;
+                padding: 10px;
+                font-size: 30px;
+                text-align: center;
+                margin-bottom: 20px;
+            }
+
+            .typeplante-table {
+                width: 100%;
+                background-color: #5f8f5e;
+            }
+
+            .typeplante-table th,
+            .typeplante-table td {
+                border: 1px solid #336626;
+                padding: 10px;
+                text-align: center;
+                color: #4f9a3d;
+            }
+
+            .typeplante-button {
+                background-color: #4f9a3d;
+                color: #fff;
+                padding: 8px 16px;
+                border: 2px solid #ff0000;
+                text-align: center;
+                text-decoration: none;
+                display: inline-block;
+                font-size: 14px;
+                font-weight: bold;
+                margin: 4px 2px;
+                cursor: pointer;
+            }
+
+            .typeplante-button:hover {
+                background-color: #3d7e35;
+            }
+            
+            .change-color-button {
+        background-color: #8dbb75;
+        color: #8dbb75;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 3px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+    }
+    
+    .logo {
+                float: left; /* Déplace le logo à droite */
+                margin-right : 20px; /* Ajoute une marge à gauche pour séparer la citation du logo */
+                margin-top: -76px
+            }

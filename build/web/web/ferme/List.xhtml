@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <h:head>
+        <style>
+            /* Farm-themed styles */
+            body {
+                background-color: #f5f8ed; 
+                font-family: 'Arial', sans-serif;
+            }
+
+          .farm-panel {
+                border: 2px solid #8dbb75; /* Greenish border for the panel */
+                border-radius: 10px;
+                margin: 20px;
+                padding: 20px;
+                background-color: #fff; /* White background for the panel */
+            }
+
+            .farm-header {
+    background-color: #8dbb75; /* Greenish color for the header */
+    color: #fff; /* White text on the header */
+    padding: 10px;
+    font-size: 30px;
+    text-align: center;
+    margin-bottom: 20px; /* Réduisez la marge pour éviter un espace trop important en bas */
+    width: 100%; /* Utilisez 100% de la largeur du conteneur parent */
+    box-sizing: border-box; /* Incluez le padding et la bordure dans la largeur totale */
+}
+
+
+            .farm-table {
+                width: 100%;
+                background-color: #5f8f5e;/* Greenish background color for the table */
+            }
+
+            .farm-table th,
+            .farm-table td {
+                 border: 1px solid #336626; /* Dark greenish border for table cells */
+                padding: 10px; /* Adjusted padding */
+                text-align: center;
+                color: #4f9a3d; /* Dark greenish text color for table cells */
+            }
+
+            .farm-button {
+                background-color: #4f9a3d; /* Dark greenish color for buttons */
+                color: #336626; /* White text on buttons */
+                padding: 8px 16px;
+                border: 2px solid #ff0000; /* Red border for buttons */
+                text-align: center;
+                text-decoration: none;
+                display: inline-block;
+                font-size: 14px;
+                font-weight: bold; /* Bold text for buttons */
+                margin: 4px 2px;
+                cursor: pointer;
+            }
+
+            .farm-button:hover {
+                background-color: #4f9a3d; /* Darker greenish color on hover */
+            }
+
+        </style>
+    </h:head>
+
+    <h:body>
+        <ui:composition template="/template.xhtml">
+
+            <ui:define name="title">
+                <h:outputText value="#{bundle.ListFermeTitle}" />
+            </ui:define> 
+
+            <ui:define name="body">
+                <h:form id="FermeListForm">
+                    <div class="farm-panel">
+                        <h:outputText styleClass="farm-header" value="#{bundle.ListFermeTitle}" />
+
+                        <p:dataTable id="datalist" value="#{fermeController.items}" var="item"
+                                     selectionMode="single" selection="#{fermeController.selected}"
+                                     paginator="true"
+                                     rowKey="#{item.id}"
+                                     rows="10"
+                                     rowsPerPageTemplate="10,20,30,40,50"
+                                     styleClass="farm-table">
+
+                            <p:ajax event="rowSelect" update="createButton viewButton editButton deleteButton" />
+                            <p:ajax event="rowUnselect" update="createButton viewButton editButton deleteButton" />
+
+                            <p:column>
+                                <f:facet name="header">
+                                    <h:outputText value="#{bundle.ListFermeTitle_id}" />
+                                </f:facet>
+                                <h:outputText value="#{item.id}" />
+                            </p:column>
+                            <p:column>
+                                <f:facet name="header">
+                                    <h:outputText value="#{bundle.ListFermeTitle_photo}" />
+                                </f:facet>
+                                <h:outputText value="#{item.photo}" />
+                            </p:column>
+                            <p:column>
+                                <f:facet name="header">
+                                    <h:outputText value="#{bundle.ListFermeTitle_libelle}" />
+                                </f:facet>
+                                <h:outputText value="#{item.libelle}" />
+                            </p:column>
+                            <p:column filterBy="#{item.userId}">
+                                <f:facet name="header">
+                                    <h:outputText value="#{bundle.ListFermeTitle_userId}" />
+                                </f:facet>
+                                <h:outputText value="#{item.userId}" />
+                            </p:column>
+                            <f:facet name="footer">
+                                <p:commandButton id="createButton" icon="ui-icon-plus" value="#{bundle.Create}"
+                                                 actionListener="#{fermeController.prepareCreate}" update=":FermeCreateForm"
+                                                 oncomplete="PF('FermeCreateDialog').show()" styleClass="farm-button" />
+                                <p:commandButton id="viewButton" icon="ui-icon-search" value="#{bundle.View}"
+                                                 update=":FermeViewForm" oncomplete="PF('FermeViewDialog').show()"
+                                                 disabled="#{empty fermeController.selected}" styleClass="farm-button" />
+                                <p:commandButton id="editButton" icon="ui-icon-pencil" value="#{bundle.Edit}"
+                                                 update=":FermeEditForm" oncomplete="PF('FermeEditDialog').show()"
+                                                 disabled="#{empty fermeController.selected}" styleClass="farm-button" />
+                                <p:commandButton id="deleteButton" icon="ui-icon-trash" value="#{bundle.Delete}"
+                                                 actionListener="#{fermeController.destroy}" update=":growl,datalist"
+                                                 disabled="#{empty fermeController.selected}" styleClass="farm-button" />
+                            </f:facet>
+                        </p:dataTable>
+                    </div>
+                    <img src="#{request.contextPath}/resources/css/fleurs.jpeg" alt="Description de l'image" style="width: 100%;" />
+                    <div style="text-align: center; margin-top: 10px;">
+    <p>Created By ❤ par SAMIA ASMAA WAFAA </p>
+</div>
+                </h:form>
+
+                <ui:include src="Create.xhtml" />
+                <ui:include src="Edit.xhtml" />
+                <ui:include src="View.xhtml" />
+            </ui:define>
+        </ui:composition>
+    </h:body>
+</html>

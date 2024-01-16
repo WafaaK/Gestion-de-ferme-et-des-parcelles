@@ -1,0 +1,123 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+
+    <h:head>
+        <title>Gestion d'une ferme </title>
+        <h:outputStylesheet name="css/jsfcrud.css"/>
+       <style>
+    body {
+        font-family: 'Arial', sans-serif;
+        margin: 0;
+        padding: 0;
+        overflow: hidden;
+        transition: background-color 0.5s ease;
+        background-size: cover;
+        background-position: center center;
+        background-repeat: no-repeat;
+    }
+
+    .header {
+        background-color: #8dbb75; /* Couleur du fond de l'en-tête (vert ferme) */
+        color: #fff;
+        text-align: center;
+        padding: 10px;
+        height: 40px;
+    }
+
+    .menu {
+        background-color: transparent; /* Remove background color */
+        color: #fff;
+        width: 200px;
+        padding: 20px;
+        position: fixed;
+        top: 150px; /* Adjust the top position to move it down */
+    }
+
+    .content {
+        background: none; /* Remove background color */
+        padding: 2px;
+        border-radius: 10px;
+        margin-left: 0; /* Remove left margin */
+        height: 100vh;
+    }
+
+    .date {
+        font-size: 1.5em;
+        color: #336626; /* Couleur de la date (vert foncé) */
+    }
+
+    h2.title {
+        color: #fff;
+        font-size:xx-large; /* Adjust the font size */
+        text-align: center;
+        background-color: rgba(0, 0, 0, 0.5); /* Add a background color with some transparency */
+        padding: 20px;
+        border-radius: 10px;
+        position: fixed;
+        top: 10;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 100%;
+    }
+
+    .change-color-button {
+        background-color: #8dbb75;
+        color: #8dbb75;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 3px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+    }
+
+    .change-color-button:hover {
+        background-color: #8dbb75;
+    }
+</style>
+    </h:head>
+
+    <h:body onunload="preventBack()">
+        
+       
+        <!-- Menu -->
+        <div class="menu">
+            <h:form>
+                
+                
+                <p:menu style="width: 100%; border: none;">
+                    <p:submenu label="La gestion de la ferme">
+                        <p:menuitem value="AppUser" outcome="/faces/web/appUser/List" icon="ui-icon-star" />
+                        <p:menuitem value="Ferme" outcome="/faces/web/ferme/List" icon="ui-icon-star"/>
+                        <p:menuitem value="Parcelle" outcome="/faces/web/parcelle/List" icon="ui-icon-star" />
+                        <p:menuitem value="Plantage" outcome="/faces/web/plantage/List" icon="ui-icon-star"/>
+                        <p:menuitem value="Plante" outcome="/faces/web/plante/List" icon="ui-icon-star"/>
+                        <p:menuitem value="TypePlante" outcome="/faces/web/typePlante/List" icon="ui-icon-star"/>
+                         <p:menuitem value="Logout" outcome="/index" icon="ui-icon-star"/>
+                    </p:submenu>
+                </p:menu>
+            </h:form>
+        </div>
+
+        <!-- Contenu principal -->
+        <div class="content">
+            <h2 class="title">BIENVENUE DANS NOTRE FERME</h2>
+            <h:graphicImage library="css" name="quelle-belle-region-odenwald.jpg" alt="Image d'accueil" style="width: 100%; height: auto;" />
+        </div>
+
+    </h:body>
+    
+     <script type="text/javascript">
+    function preventBack() {
+        window.history.forward();
+    }
+
+    setTimeout("preventBack()", 0);
+
+    window.onunload = function () {
+        null;
+    };
+</script>
+</html>

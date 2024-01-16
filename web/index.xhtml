@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://java.sun.com/jsf/core">
+<h:head>
+    <title>Login Page</title>
+    <style>
+        body {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            background: url(https://img.freepik.com/free-photo/sunny-meadow-landscape_1112-134.jpg) center center no-repeat;
+            background-size: cover;
+        }
+
+        .login-container {
+            width: 1000px;
+            padding: 200px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+    </style>
+</h:head>
+<h:body>
+     <div class="login-container">
+        <p:messages id="errorMessages" showDetail="true" autoUpdate="true" closable="true" />
+        
+      <h:form rendered="#{not adminBean.loggedIn}" style="background-color: rgba(255, 255, 255, 0.7); margin: auto; text-align: center; padding: 20px; border-radius: 5px;">
+    <h1 style="margin-bottom: 20px;">Sign In</h1>
+
+    <p:inputText id="username" value="#{adminBean.userName}" placeholder="Username" style="margin-bottom: 20px; padding: 10px; border: 1px solid #ccc; border-radius: 5px;" />
+
+    <p:password id="password" value="#{adminBean.password}" placeholder="Password" style="margin-bottom: 20px; padding: 10px; border: 1px solid #ccc; border-radius: 5px;" />
+
+    <p:commandButton value="Login" action="#{adminBean.login}" style="width: 100%; padding: 10px; border: none; background: orange; color: white; border-radius: 5px;" />
+</h:form>
+
+
+        <h:form rendered="#{adminBean.loggedIn}" style="background-color: rgba(255, 255, 255, 0.7);max-width: 400px; margin: auto; text-align: center; border: 1px solid #ddd; padding: 20px; border-radius: 5px;">
+            <h:outputText value="Voulez-vous se deconnecter!" style="display: block; margin-bottom: 20px;" />
+
+            <p:commandButton value="Logout" action="#{adminBean.logout}" style="width: 100%; padding: 10px; border: none; background: orange; color: white; border-radius: 5px;" />
+        </h:form>
+
+    </div>
+</h:body>
+</html>

@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="AppUserViewDlg" widgetVar="AppUserViewDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.ViewAppUserTitle}" style="background-image:  url('#{request.contextPath}/resources/css/cc.jpg'); background-size: cover; color: #fff; border-radius: 10px; padding: 20px;">
+            <h:form id="AppUserViewForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{appUserController.selected != null}">
+                        <h:outputText value="#{bundle.ViewAppUserLabel_id}"/>
+                        <h:outputText value="#{appUserController.selected.id}" title="#{bundle.ViewAppUserTitle_id}"/>
+                        <h:outputText value="#{bundle.ViewAppUserLabel_address}"/>
+                        <h:outputText value="#{appUserController.selected.address}" title="#{bundle.ViewAppUserTitle_address}"/>
+                        <h:outputText value="#{bundle.ViewAppUserLabel_email}"/>
+                        <h:outputText value="#{appUserController.selected.email}" title="#{bundle.ViewAppUserTitle_email}"/>
+                        <h:outputText value="#{bundle.ViewAppUserLabel_image}"/>
+                        <h:outputText value="#{appUserController.selected.image}" title="#{bundle.ViewAppUserTitle_image}"/>
+                        <h:outputText value="#{bundle.ViewAppUserLabel_password}"/>
+                        <h:outputText value="#{appUserController.selected.password}" title="#{bundle.ViewAppUserTitle_password}"/>
+                        <h:outputText value="#{bundle.ViewAppUserLabel_phone}"/>
+                        <h:outputText value="#{appUserController.selected.phone}" title="#{bundle.ViewAppUserTitle_phone}"/>
+                        <h:outputText value="#{bundle.ViewAppUserLabel_role}"/>
+                        <h:outputText value="#{appUserController.selected.role}" title="#{bundle.ViewAppUserTitle_role}"/>
+                        <h:outputText value="#{bundle.ViewAppUserLabel_username}"/>
+                        <h:outputText value="#{appUserController.selected.username}" title="#{bundle.ViewAppUserTitle_username}"/>
+                    </p:panelGrid>
+                    <p:commandButton value="#{bundle.Close}" onclick="AppUserViewDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

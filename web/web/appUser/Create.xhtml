@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="AppUserCreateDlg" widgetVar="AppUserCreateDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.CreateAppUserTitle}" style="background-image:  url('#{request.contextPath}/resources/css/cc.jpg'); background-size: cover; color: #fff; border-radius: 10px; padding: 20px;">
+            
+            <h:form id="AppUserCreateForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{appUserController.selected != null}">
+                        <p:outputLabel value="#{bundle.CreateAppUserLabel_id}" for="id" />
+                        <p:inputText id="id" value="#{appUserController.selected.id}" title="#{bundle.CreateAppUserTitle_id}" required="true" requiredMessage="#{bundle.CreateAppUserRequiredMessage_id}"/>
+                        <p:outputLabel value="#{bundle.CreateAppUserLabel_address}" for="address" />
+                        <p:inputText id="address" value="#{appUserController.selected.address}" title="#{bundle.CreateAppUserTitle_address}" />
+                        <p:outputLabel value="#{bundle.CreateAppUserLabel_email}" for="email" />
+                        <p:inputText id="email" value="#{appUserController.selected.email}" title="#{bundle.CreateAppUserTitle_email}" />
+                        <p:outputLabel value="#{bundle.CreateAppUserLabel_image}" for="image" />
+                        <p:inputText id="image" value="#{appUserController.selected.image}" title="#{bundle.CreateAppUserTitle_image}" />
+                        <p:outputLabel value="#{bundle.CreateAppUserLabel_password}" for="password" />
+                        <p:inputText id="password" value="#{appUserController.selected.password}" title="#{bundle.CreateAppUserTitle_password}" />
+                        <p:outputLabel value="#{bundle.CreateAppUserLabel_phone}" for="phone" />
+                        <p:inputText id="phone" value="#{appUserController.selected.phone}" title="#{bundle.CreateAppUserTitle_phone}" />
+                        <p:outputLabel value="#{bundle.CreateAppUserLabel_role}" for="role" />
+                        <p:inputText id="role" value="#{appUserController.selected.role}" title="#{bundle.CreateAppUserTitle_role}" />
+                        <p:outputLabel value="#{bundle.CreateAppUserLabel_username}" for="username" />
+                        <p:inputText id="username" value="#{appUserController.selected.username}" title="#{bundle.CreateAppUserTitle_username}" />
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{appUserController.create}" value="#{bundle.Save}" update="display,:AppUserListForm:datalist,:growl" oncomplete="handleSubmit(args,'AppUserCreateDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="AppUserCreateDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

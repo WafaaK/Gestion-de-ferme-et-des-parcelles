@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <head>
+        <style>
+            body {
+                background-color: #f5f8ed;
+                font-family: 'Arial', sans-serif;
+            }
+
+            .plantage-panel {
+                border: 2px solid #8dbb75;
+                border-radius: 10px;
+                margin: 20px;
+                padding: 20px;
+                background-color: #fff;
+            }
+
+            .plantage-header {
+                background-color: #8dbb75;
+                color: #fff;
+                padding: 10px;
+                font-size: 30px;
+                text-align: center;
+                margin-bottom: 20px;
+            }
+
+            .plantage-table {
+                width: 100%;
+                background-color: #5f8f5e;
+            }
+
+            .plantage-table th,
+            .plantage-table td {
+                border: 1px solid #336626;
+                padding: 10px;
+                text-align: center;
+                color: #4f9a3d;
+            }
+
+            .plantage-button {
+                background-color: #4f9a3d;
+                color: #fff;
+                padding: 8px 16px;
+                border: 2px solid #ff0000;
+                text-align: center;
+                text-decoration: none;
+                display: inline-block;
+                font-size: 14px;
+                font-weight: bold;
+                margin: 4px 2px;
+                cursor: pointer;
+            }
+
+            .plantage-button:hover {
+                background-color: #3d7e35;
+            }
+        </style>
+    </head>
+
+    <body>
+        <ui:composition template="/template.xhtml">
+
+            <ui:define name="title">
+                <h:outputText value="#{bundle.ListPlantageTitle}" />
+            </ui:define>
+
+            <ui:define name="body">
+                <div class="plantage-panel">
+                    <div class="plantage-header">
+                        <h:outputText value="#{bundle.ListPlantageTitle}" />
+                    </div>
+                    <h:form id="PlantageListForm">
+                       
+                            <p:dataTable id="datalist" value="#{plantageController.items}" var="item"
+                                         selectionMode="single" selection="#{plantageController.selected}"
+                                         paginator="true"
+                                         rowKey="#{item.plantagePK}"
+                                         rows="10"
+                                         rowsPerPageTemplate="10,20,30,40,50"
+                                         styleClass="plantage-table">
+
+                                <p:ajax event="rowSelect" update="createButton viewButton editButton deleteButton" />
+                                <p:ajax event="rowUnselect" update="createButton viewButton editButton deleteButton" />
+
+                                <p:column>
+                                    <f:facet name="header">
+                                        <h:outputText value="#{bundle.ListPlantageTitle_plantagePK_parcelle}" />
+                                    </f:facet>
+                                    <h:outputText value="#{item.plantagePK.parcelle}" />
+                                </p:column>
+                                <p:column>
+                                    <f:facet name="header">
+                                        <h:outputText value="#{bundle.ListPlantageTitle_plantagePK_plante}" />
+                                    </f:facet>
+                                    <h:outputText value="#{item.plantagePK.plante}" />
+                                </p:column>
+                                <p:column>
+                                    <f:facet name="header">
+                                        <h:outputText value="#{bundle.ListPlantageTitle_plantagePK_nombre}" />
+                                    </f:facet>
+                                    <h:outputText value="#{item.plantagePK.nombre}" />
+                                </p:column>
+                                <p:column sortBy="#{item.plantagePK.date}">
+                                    <f:facet name="header">
+                                        <h:outputText value="#{bundle.ListPlantageTitle_plantagePK_date}" />
+                                    </f:facet>
+                                    <h:outputText value="#{item.plantagePK.date}" />
+                                </p:column>
+                                <p:column>
+                                    <f:facet name="header">
+                                        <h:outputText value="#{bundle.ListPlantageTitle_parcelleId}" />
+                                    </f:facet>
+                                    <h:outputText value="#{item.parcelleId}" />
+                                </p:column>
+                                <p:column>
+                                    <f:facet name="header">
+                                        <h:outputText value="#{bundle.ListPlantageTitle_planteId}" />
+                                    </f:facet>
+                                    <h:outputText value="#{item.planteId}" />
+                                </p:column>
+                                <f:facet name="footer">
+                                    <p:commandButton id="createButton" icon="ui-icon-plus" value="#{bundle.Create}" actionListener="#{plantageController.prepareCreate}" update=":PlantageCreateForm" oncomplete="PF('PlantageCreateDialog').show()" styleClass="plantage-button" />
+                                    <p:commandButton id="viewButton" icon="ui-icon-search" value="#{bundle.View}" update=":PlantageViewForm" oncomplete="PF('PlantageViewDialog').show()" disabled="#{empty plantageController.selected}" styleClass="plantage-button" />
+                                    <p:commandButton id="editButton" icon="ui-icon-pencil" value="#{bundle.Edit}" update=":PlantageEditForm" oncomplete="PF('PlantageEditDialog').show()" disabled="#{empty plantageController.selected}" styleClass="plantage-button" />
+                                    <p:commandButton id="deleteButton" icon="ui-icon-trash" value="#{bundle.Delete}" actionListener="#{plantageController.destroy}" update=":growl,datalist" disabled="#{empty plantageController.selected}" styleClass="plantage-button" />
+                                </f:facet>
+                            </p:dataTable>
+                        
+                    </h:form>
+
+                    <ui:include src="Create.xhtml" />
+                    <ui:include src="Edit.xhtml" />
+                    <ui:include src="View.xhtml" />
+                    <img src="#{request.contextPath}/resources/css/fleurs.jpeg" alt="Description de l'image" style="width: 100%;" />
+                    <div style="text-align: center; margin-top: 10px;">
+    <p>Created By ❤ par SAMIA ASMAA WAFAA </p>
+</div>
+                </div>
+            </ui:define>
+        </ui:composition>
+    </body>
+</html>

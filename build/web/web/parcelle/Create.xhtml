@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="ParcelleCreateDlg" widgetVar="ParcelleCreateDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.CreateParcelleTitle}" style="background-image:  url('#{request.contextPath}/resources/css/cc.jpg'); background-size: cover; color: #fff; border-radius: 10px; padding: 20px;">
+            <h:form id="ParcelleCreateForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{parcelleController.selected != null}">
+                        <p:outputLabel value="#{bundle.CreateParcelleLabel_id}" for="id" />
+                        <p:inputText id="id" value="#{parcelleController.selected.id}" title="#{bundle.CreateParcelleTitle_id}" required="true" requiredMessage="#{bundle.CreateParcelleRequiredMessage_id}" style="width: 100%;" />
+                        <p:outputLabel value="#{bundle.CreateParcelleLabel_photo}" for="photo" />
+                        <p:inputText id="photo" value="#{parcelleController.selected.photo}" title="#{bundle.CreateParcelleTitle_photo}" style="width: 100%;" />
+                        <p:outputLabel value="#{bundle.CreateParcelleLabel_libelle}" for="libelle" />
+                        <p:inputText id="libelle" value="#{parcelleController.selected.libelle}" title="#{bundle.CreateParcelleTitle_libelle}" style="width: 100%;" />
+                        <p:outputLabel value="#{bundle.CreateParcelleLabel_superficie}" for="superficie" />
+                        <p:inputText id="superficie" value="#{parcelleController.selected.superficie}" title="#{bundle.CreateParcelleTitle_superficie}" style="width: 100%;" />
+                        <p:outputLabel value="#{bundle.CreateParcelleLabel_fermeId}" for="fermeId" />
+                        <p:selectOneMenu id="fermeId" value="#{parcelleController.selected.fermeId}" style="width: 100%;">
+                            <f:selectItems value="#{fermeController.itemsAvailableSelectOne}"
+                                           var="fermeIdItem"
+                                           itemValue="#{fermeIdItem}"/>
+                        </p:selectOneMenu>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{parcelleController.create}" value="#{bundle.Save}" update="display,:ParcelleListForm:datalist,:growl" oncomplete="handleSubmit(args,'ParcelleCreateDialog');" style="margin-top: 10px; background-color: #4CAF50; color: #fff; border: none; padding: 10px; border-radius: 5px;" />
+                    <p:commandButton value="#{bundle.Cancel}" onclick="ParcelleCreateDialog.hide()" style="margin-top: 10px; background-color: #ccc; color: #000; border: none; padding: 10px; border-radius: 5px;" />
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

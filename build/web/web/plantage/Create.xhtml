@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="PlantageCreateDlg" widgetVar="PlantageCreateDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.CreatePlantageTitle}" style="background-image:  url('#{request.contextPath}/resources/css/cc.jpg'); background-size: cover; color: #fff; border-radius: 10px; padding: 20px;">
+            <h:form id="PlantageCreateForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{plantageController.selected != null}">
+                        <p:outputLabel value="#{bundle.CreatePlantageLabel_plantagePK_parcelle}" for="plantagePK_parcelle" />
+                        <p:inputText id="plantagePK_parcelle" value="#{plantageController.selected.plantagePK.parcelle}" title="#{bundle.CreatePlantageTitle_plantagePK_parcelle}" required="true" requiredMessage="#{bundle.CreatePlantageRequiredMessage_plantagePK_parcelle}"/>
+                        <p:outputLabel value="#{bundle.CreatePlantageLabel_plantagePK_date}" for="plantagePK_date" />
+                        <p:inputText id="plantagePK_date" value="#{plantageController.selected.plantagePK.date}" title="#{bundle.CreatePlantageTitle_plantagePK_date}" required="true" requiredMessage="#{bundle.CreatePlantageRequiredMessage_plantagePK_date}"/>
+                        <p:outputLabel value="#{bundle.CreatePlantageLabel_plantagePK_nombre}" for="plantagePK_nombre" />
+                        <p:inputText id="plantagePK_nombre" value="#{plantageController.selected.plantagePK.nombre}" title="#{bundle.CreatePlantageTitle_plantagePK_nombre}" required="true" requiredMessage="#{bundle.CreatePlantageRequiredMessage_plantagePK_nombre}"/>
+                        <p:outputLabel value="#{bundle.CreatePlantageLabel_plantagePK_plante}" for="plantagePK_plante" />
+                        <p:inputText id="plantagePK_plante" value="#{plantageController.selected.plantagePK.plante}" title="#{bundle.CreatePlantageTitle_plantagePK_plante}" required="true" requiredMessage="#{bundle.CreatePlantageRequiredMessage_plantagePK_plante}"/>
+                        <p:outputLabel value="#{bundle.CreatePlantageLabel_parcelleId}" for="parcelleId" />
+                        <p:selectOneMenu id="parcelleId" value="#{plantageController.selected.parcelleId}" required="true" requiredMessage="#{bundle.EditPlantageRequiredMessage_parcelleId}">
+                            <f:selectItems value="#{parcelleController.itemsAvailableSelectOne}"
+                                           var="parcelleIdItem"
+                                           itemValue="#{parcelleIdItem}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{bundle.CreatePlantageLabel_planteId}" for="planteId" />
+                        <p:selectOneMenu id="planteId" value="#{plantageController.selected.planteId}" >
+                            <f:selectItems value="#{planteController.itemsAvailableSelectOne}"
+                                           var="planteIdItem"
+                                           itemValue="#{planteIdItem}"/>
+                        </p:selectOneMenu>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{plantageController.create}" value="#{bundle.Save}" update="display,:PlantageListForm:datalist,:growl" oncomplete="handleSubmit(args,'PlantageCreateDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="PlantageCreateDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

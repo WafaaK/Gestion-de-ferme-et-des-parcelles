@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <head>
+        <style>
+            body {
+                background-color: #f5f8ed;
+                font-family: 'Arial', sans-serif;
+            }
+
+            .plante-panel {
+                border: 2px solid #8dbb75;
+                border-radius: 10px;
+                margin: 20px;
+                padding: 20px;
+                background-color: #fff;
+            }
+
+            .plante-header {
+                background-color: #8dbb75;
+                color: #fff;
+                padding: 10px;
+                font-size: 30px;
+                text-align: center;
+                margin-bottom: 20px;
+            }
+
+            .plante-table {
+                width: 100%;
+                background-color: #5f8f5e;
+            }
+
+            .plante-table th,
+            .plante-table td {
+                border: 1px solid #336626;
+                padding: 10px;
+                text-align: center;
+                color: #4f9a3d;
+            }
+
+            .plante-button {
+                background-color: #4f9a3d;
+                color: #fff;
+                padding: 8px 16px;
+                border: 2px solid #ff0000;
+                text-align: center;
+                text-decoration: none;
+                display: inline-block;
+                font-size: 14px;
+                font-weight: bold;
+                margin: 4px 2px;
+                cursor: pointer;
+            }
+
+            .plante-button:hover {
+                background-color: #3d7e35;
+            }
+        </style>
+    </head>
+
+    <body>
+        <ui:composition template="/template.xhtml">
+
+            <ui:define name="title">
+                <h:outputText value="#{bundle.ListPlanteTitle}" />
+            </ui:define>
+
+            <ui:define name="body">
+                <div class="plante-panel">
+                    <div class="plante-header">
+                        <h:outputText value="#{bundle.ListPlanteTitle}" />
+                    </div>
+                    
+                    <h:form id="PlanteListForm">
+                       
+                            <p:dataTable id="datalist" value="#{planteController.items}" var="item"
+                                         selectionMode="single" selection="#{planteController.selected}"
+                                         paginator="true"
+                                         rowKey="#{item.id}"
+                                         rows="10"
+                                         rowsPerPageTemplate="10,20,30,40,50"
+                                         styleClass="plante-table">
+
+                                <p:ajax event="rowSelect" update="createButton viewButton editButton deleteButton" />
+                                <p:ajax event="rowUnselect" update="createButton viewButton editButton deleteButton" />
+
+                                <p:column>
+                                    <f:facet name="header">
+                                        <h:outputText value="#{bundle.ListPlanteTitle_id}" />
+                                    </f:facet>
+                                    <h:outputText value="#{item.id}" />
+                                </p:column>
+                                <p:column>
+                                    <f:facet name="header">
+                                        <h:outputText value="#{bundle.ListPlanteTitle_image}" />
+                                    </f:facet>
+                                    <h:outputText value="#{item.image}" />
+                                </p:column>
+                                <p:column>
+                                    <f:facet name="header">
+                                        <h:outputText value="#{bundle.ListPlanteTitle_libelle}" />
+                                    </f:facet>
+                                    <h:outputText value="#{item.libelle}" />
+                                </p:column>
+                                <p:column>
+                                    <f:facet name="header">
+                                        <h:outputText value="#{bundle.ListPlanteTitle_racine}" />
+                                    </f:facet>
+                                    <h:outputText value="#{item.racine}" />
+                                </p:column>
+                                <p:column>
+                                    <f:facet name="header">
+                                        <h:outputText value="#{bundle.ListPlanteTitle_typePlanteId}" />
+                                    </f:facet>
+                                    <h:outputText value="#{item.typePlanteId}" />
+                                </p:column>
+                                <f:facet name="footer">
+                                    <p:commandButton id="createButton" icon="ui-icon-plus" value="#{bundle.Create}" actionListener="#{planteController.prepareCreate}" update=":PlanteCreateForm" oncomplete="PF('PlanteCreateDialog').show()" styleClass="plante-button" />
+                                    <p:commandButton id="viewButton" icon="ui-icon-search" value="#{bundle.View}" update=":PlanteViewForm" oncomplete="PF('PlanteViewDialog').show()" disabled="#{empty planteController.selected}" styleClass="plante-button" />
+                                    <p:commandButton id="editButton" icon="ui-icon-pencil" value="#{bundle.Edit}" update=":PlanteEditForm" oncomplete="PF('PlanteEditDialog').show()" disabled="#{empty planteController.selected}" styleClass="plante-button" />
+                                    <p:commandButton id="deleteButton" icon="ui-icon-trash" value="#{bundle.Delete}" actionListener="#{planteController.destroy}" update=":growl,datalist" disabled="#{empty planteController.selected}" styleClass="plante-button" />
+                                </f:facet>
+                            </p:dataTable>
+                        
+                    </h:form>
+
+                    <ui:include src="Create.xhtml" />
+                    <ui:include src="Edit.xhtml" />
+                    <ui:include src="View.xhtml" />
+                    <img src="#{request.contextPath}/resources/css/fleurs.jpeg" alt="Description de l'image" style="width: 100%;" />
+                    <div style="text-align: center; margin-top: 10px;">
+    <p>Created By ❤ par SAMIA ASMAA WAFAA </p>
+</div>
+                </div>
+            </ui:define>
+        </ui:composition>
+    </body>
+</html>

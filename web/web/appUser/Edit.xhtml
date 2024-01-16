@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="AppUserEditDlg" widgetVar="AppUserEditDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.EditAppUserTitle}" style="background-image:  url('#{request.contextPath}/resources/css/cc.jpg'); background-size: cover; color: #fff; border-radius: 10px; padding: 20px;">
+            <h:form id="AppUserEditForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{appUserController.selected != null}">
+                        <p:outputLabel value="#{bundle.EditAppUserLabel_id}" for="id" />
+                        <p:inputText id="id" value="#{appUserController.selected.id}" title="#{bundle.EditAppUserTitle_id}" required="true" requiredMessage="#{bundle.EditAppUserRequiredMessage_id}"/>
+                        <p:outputLabel value="#{bundle.EditAppUserLabel_address}" for="address" />
+                        <p:inputText id="address" value="#{appUserController.selected.address}" title="#{bundle.EditAppUserTitle_address}" />
+                        <p:outputLabel value="#{bundle.EditAppUserLabel_email}" for="email" />
+                        <p:inputText id="email" value="#{appUserController.selected.email}" title="#{bundle.EditAppUserTitle_email}" />
+                        <p:outputLabel value="#{bundle.EditAppUserLabel_image}" for="image" />
+                        <p:inputText id="image" value="#{appUserController.selected.image}" title="#{bundle.EditAppUserTitle_image}" />
+                        <p:outputLabel value="#{bundle.EditAppUserLabel_password}" for="password" />
+                        <p:inputText id="password" value="#{appUserController.selected.password}" title="#{bundle.EditAppUserTitle_password}" />
+                        <p:outputLabel value="#{bundle.EditAppUserLabel_phone}" for="phone" />
+                        <p:inputText id="phone" value="#{appUserController.selected.phone}" title="#{bundle.EditAppUserTitle_phone}" />
+                        <p:outputLabel value="#{bundle.EditAppUserLabel_role}" for="role" />
+                        <p:inputText id="role" value="#{appUserController.selected.role}" title="#{bundle.EditAppUserTitle_role}" />
+                        <p:outputLabel value="#{bundle.EditAppUserLabel_username}" for="username" />
+                        <p:inputText id="username" value="#{appUserController.selected.username}" title="#{bundle.EditAppUserTitle_username}" />
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{appUserController.update}" value="#{bundle.Save}" update="display,:AppUserListForm:datalist,:growl" oncomplete="handleSubmit(args, 'AppUserEditDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="AppUserEditDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

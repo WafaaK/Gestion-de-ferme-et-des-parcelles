@@ -1,0 +1,105 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <title>Facelet Title</title>
+        <h:outputStylesheet name="css/jsfcrud.css"/>
+        <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            text-align: center;
+            transition: background-color 0.5s ease;
+        }
+
+        .container {
+            max-width: 600px; /* Increased max-width */
+            margin: 100px auto;
+            background-color: aquamarine;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            transition: background-color 0.5s ease;
+        }
+
+        h2 {
+            color: #333;
+        }
+
+        .logo {
+            max-width: 100px;
+            margin-bottom: 20px;
+        }
+
+        .clock {
+            font-size: 1.5em;
+            color: #555;
+            margin-bottom: 20px;
+        }
+
+        .welcome-message {
+            font-size: 1.2em;
+            color: #336626;
+            margin-bottom: 20px;
+        }
+
+        .change-color-button {
+            background-color: #336626;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 3px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .change-color-button:hover {
+            background-color: #336626;
+        }
+
+        /* Center the button */
+        .center-button {
+            text-align: center;
+            margin: 0 auto; /* Added margin: 0 auto; for centering */
+        }
+        
+    </style>
+    </h:head>
+    <h:body>
+        <p:layoutUnit position="north" size="60" resizable="true" closable="true" collapsible="true">
+                <h:form>
+                     <p:panelGrid style=" color: pink ; width: 100%;" columns="4">
+                          <p:graphicImage library="css" name="logo.jpg" alt="Logo" style=" width: 100px; height: 50px;" />
+                          <p:clock pattern="dd/MM/yyyy" mode="client" />
+                        <p:clock pattern="hh:mm:ss" />
+                        
+                    </p:panelGrid>
+                </h:form>
+            </p:layoutUnit>
+      <p:layoutUnit position="center" style="font-weight: bold; border: 40px solid #8dbb75; border-radius: 15px; padding: 30px; background-color: #8dbb75; font-size: 18px; color: #8dbb75;">
+    BIENVENUE DANS NOTRE FERME
+</p:layoutUnit>
+         
+        
+        <h:link outcome="/faces/web/appUser/List" value="Show All AppUser Items"/>
+        <br />
+        <h:link outcome="/faces/web/ferme/List" value="Show All Ferme Items"/>
+        <br />
+        <h:link outcome="/faces/web/parcelle/List" value="Show All Parcelle Items"/>
+        <br />
+        <h:link outcome="/faces/web/plantage/List" value="Show All Plantage Items"/>
+        <br />
+        <h:link outcome="/faces/web/plante/List" value="Show All Plante Items"/>
+        <br />
+        <h:link outcome="/faces/web/typePlante/List" value="Show All TypePlante Items"/>
+    </h:body>
+
+
+
+
+
+
+</html>

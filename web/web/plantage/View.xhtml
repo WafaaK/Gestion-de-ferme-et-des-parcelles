@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="PlantageViewDlg" widgetVar="PlantageViewDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.ViewPlantageTitle}" style="background-image:  url('#{request.contextPath}/resources/css/cc.jpg'); background-size: cover; color: #fff; border-radius: 10px; padding: 20px;">
+            <h:form id="PlantageViewForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{plantageController.selected != null}">
+                        <h:outputText value="#{bundle.ViewPlantageLabel_plantagePK_parcelle}"/>
+                        <h:outputText value="#{plantageController.selected.plantagePK.parcelle}" title="#{bundle.ViewPlantageTitle_plantagePK_parcelle}"/>
+                        <h:outputText value="#{bundle.ViewPlantageLabel_plantagePK_date}"/>
+                        <h:outputText value="#{plantageController.selected.plantagePK.date}" title="#{bundle.ViewPlantageTitle_plantagePK_date}"/>
+                        <h:outputText value="#{bundle.ViewPlantageLabel_plantagePK_nombre}"/>
+                        <h:outputText value="#{plantageController.selected.plantagePK.nombre}" title="#{bundle.ViewPlantageTitle_plantagePK_nombre}"/>
+                        <h:outputText value="#{bundle.ViewPlantageLabel_plantagePK_plante}"/>
+                        <h:outputText value="#{plantageController.selected.plantagePK.plante}" title="#{bundle.ViewPlantageTitle_plantagePK_plante}"/>
+                        <h:outputText value="#{bundle.ViewPlantageLabel_parcelleId}"/>
+                        <h:outputText value="#{plantageController.selected.parcelleId}" title="#{bundle.ViewPlantageTitle_parcelleId}"/>
+                        <h:outputText value="#{bundle.ViewPlantageLabel_planteId}"/>
+                        <h:outputText value="#{plantageController.selected.planteId}" title="#{bundle.ViewPlantageTitle_planteId}"/>
+                    </p:panelGrid>
+                    <p:commandButton value="#{bundle.Close}" onclick="PlantageViewDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

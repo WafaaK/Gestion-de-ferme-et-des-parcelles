@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <head>
+        <style>
+            body {
+                background-color: #f5f8ed;
+                font-family: 'Arial', sans-serif;
+            }
+
+            .appuser-panel {
+                border: 2px solid #8dbb75;
+                border-radius: 10px;
+                margin: 20px;
+                padding: 20px;
+                background-color: #fff;
+            }
+
+            .appuser-header {
+                background-color: #8dbb75;
+                color: #fff;
+                padding: 10px;
+                font-size: 30px;
+                text-align: center;
+                margin-bottom: 20px;
+            }
+
+            .appuser-table {
+                width: 100%;
+                background-color: #5f8f5e;
+            }
+
+            .appuser-table th, 
+            .appuser-table td {
+                border: 1px solid #336626;
+                padding: 10px;
+                text-align: center;
+                color: #4f9a3d;
+            }
+
+            .appuser-button {
+                background-color: #4f9a3d;
+                color: #fff;
+                padding: 8px 16px;
+                border: 2px solid #ff0000;
+                text-align: center;
+                text-decoration: none;
+                display: inline-block;
+                font-size: 14px;
+                font-weight: bold;
+                margin: 4px 2px;
+                cursor: pointer;
+            }
+
+            .appuser-button:hover {
+                background-color: #3d7e35;
+            }
+        </style>
+    </head>
+
+    <body>
+        <ui:composition template="/template.xhtml">
+
+            <ui:define name="title">
+                <h:outputText value="#{bundle.ListAppUserTitle}" />
+            </ui:define>
+
+            <ui:define name="body">
+                <div class="appuser-panel">
+                    <div class="appuser-header">
+                        <h:outputText value="#{bundle.ListAppUserTitle}" />
+                    </div>
+                    <h:form id="AppUserListForm">
+                        <p:dataTable id="datalist" value="#{appUserController.items}" var="item"
+                                     selectionMode="single" selection="#{appUserController.selected}"
+                                     paginator="true"
+                                     rowKey="#{item.id}"
+                                     rows="10"
+                                     rowsPerPageTemplate="10,20,30,40,50"
+                                     styleClass="appuser-table">
+
+                        <p:ajax event="rowSelect"   update="createButton viewButton editButton deleteButton"/>
+                        <p:ajax event="rowUnselect" update="createButton viewButton editButton deleteButton"/>
+
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListAppUserTitle_id}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.id}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListAppUserTitle_address}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.address}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListAppUserTitle_email}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.email}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListAppUserTitle_image}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.image}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListAppUserTitle_password}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.password}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListAppUserTitle_phone}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.phone}"/>
+                        </p:column>
+                        <p:column filterBy="#{item.role}">
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListAppUserTitle_role}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.role}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListAppUserTitle_username}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.username}"/>
+                        </p:column>
+                        <f:facet name="footer">
+                                <p:commandButton id="createButton" icon="ui-icon-plus" value="#{bundle.Create}" actionListener="#{appUserController.prepareCreate}" update=":AppUserCreateForm" oncomplete="PF('AppUserCreateDialog').show()" styleClass="appuser-button" />
+                                <p:commandButton id="viewButton" icon="ui-icon-search" value="#{bundle.View}" update=":AppUserViewForm" oncomplete="PF('AppUserViewDialog').show()" disabled="#{empty appUserController.selected}" styleClass="appuser-button" />
+                                <p:commandButton id="editButton" icon="ui-icon-pencil" value="#{bundle.Edit}" update=":AppUserEditForm" oncomplete="PF('AppUserEditDialog').show()" disabled="#{empty appUserController.selected}" styleClass="appuser-button" />
+                                <p:commandButton id="deleteButton" icon="ui-icon-trash" value="#{bundle.Delete}" actionListener="#{appUserController.destroy}" update=":growl,datalist" disabled="#{empty appUserController.selected}" styleClass="appuser-button" />
+                            </f:facet>
+                        </p:dataTable>
+                       
+                    </h:form>
+                     <img src="#{request.contextPath}/resources/css/fleurs.jpeg" alt="Description de l'image" style="width: 100%;" />
+                     <div style="text-align: center; margin-top: 10px;">
+    <p>Created By ❤ par SAMIA ASMAA WAFAA </p>
+</div>
+                </div>
+
+            <ui:include src="Create.xhtml"/>
+            <ui:include src="Edit.xhtml"/>
+            <ui:include src="View.xhtml"/>
+        </ui:define>
+    </ui:composition>
+       </body>
+</html>
