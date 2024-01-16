@@ -77,7 +77,7 @@ docker build -t gestion_ferme:tag .
 Cette commande utilise le fichier Dockerfile pour créer une image Docker qui inclut toutes les dépendances nécessaires pour exécuter votre application.
 
  3)Executez le conteneur Docker:
-docker run -p 8080:8080 gestion_ferme:tag
+docker run -p 8080:8082 gestion_ferme:tag
 
  4)Accédez à l'application :
 Ouvrir le navigateur web et tappez : http://localhost:8080 pour afficher l'application.
